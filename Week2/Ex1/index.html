@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Ex1</title>
+</head>
+<body>
+    <h1>Ex1</h1>
+    <span>1. </span>
+    <br/>
+    <div class="content">
+        <div class="day"></div>
+        <div class="time"></div>
+    </div>
+    <br/>
+
+    <span>2. </span>
+    <input type="text" value="Hello World" id="myInput">
+
+    <div class="tooltip">
+        <button onclick="CopyText()" onmouseout="outText()">
+        <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+            Copy text
+        </button>
+    </div>
+    <script>
+        function CopyText() {
+        var copyText = document.getElementById("myInput");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(copyText.value);
+        
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copied: " + copyText.value;
+
+        }
+
+        function outText() {
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copy to clipboard";
+        }
+    </script>
+
+    <br/>
+    <br/>
+    <span>3. </span>
+    <input type="text" value="foo=bar; equation=E%3Dmc%5E2">
+    <button onclick="call()">
+            Parse Cookie
+    </button>
+    <div class="call"></div>
+    <script>
+        const parseCookie = str =>
+        str
+            .split(';')
+            .map(v => v.split('='))
+            .reduce((acc, v) => {
+            acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[1].trim());
+            return acc;
+            }, {});
+        console.log(parseCookie('foo=bar; equation=E%3Dmc%5E2'));
+        const value = parseCookie('foo=bar; equation=E%3Dmc%5E2')
+
+        function call(){
+            document.querySelector(".call").innerHTML = value.foo + " " + value.equation;
+            
+        }
+    </script>
+
+    <br/>
+    <span>4. </span>
+    <input type="text" value="name:Thanh,age:20">
+    <button onclick="isValidJSON()">
+            Check if JSON
+    </button>
+    <div class="call4"></div>
+    <script>
+        const isValidJSON = obj => {
+        try {
+            JSON.parse(obj);
+            return true;
+        } catch (e) {
+            return false;
+        }
+        };
+        console.log(isValidJSON('{"name":"Thanh","age":20}'));
+        const value1 = isValidJSON('{"name":"Thanh","age":20}')
+        document.querySelector(".call4").innerHTML = value1;
+
+    </script>
+
+    <br/>
+    <span>5. </span>
+    <input type="text" value="name:Thanh,age:20">
+    <button onclick="savefile()">
+            Save file
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        function savefile(){
+            var blob = new Blob(["name:Thanh,age:20"], {type: "JSON"});
+            saveAs(blob, "Thanh.txt");
+        }
+    </script>
+    <script type="text/javascript" src="./index.js"></script>
+</body>
+</html>
