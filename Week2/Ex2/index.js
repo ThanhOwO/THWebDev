@@ -4,6 +4,11 @@ function ChangeColor() {
 
 function ChangeText() {
     document.getElementById("uni").innerHTML = "University of Information Technology"
+    
+}
+
+function ChangeText2() {
+    document.getElementById("uni2").innerHTML = "University of Information Technology"
 }
 
 $(document).ready(function () {
