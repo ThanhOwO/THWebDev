@@ -1,4 +1,3 @@
-
 .app{
   display: grid;
   place-items: center;
@@ -28,4 +27,15 @@
 
 .app_posts{
   padding: 20px;
+}
+
+.app_headerImage{
+  oject-fit: contain;
+  margin-left: 10px;
+  height: 40px;
+}
+
+.app_signup{
+  display: flex;
+  flex-direction: column;
 }

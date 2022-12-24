@@ -74,7 +74,7 @@ function App() {
 
   const signUp = async(e) => {
     e.preventDefault();
-    auth.CreateUserWithEmailAndPassword(email, password)
+    auth.createUserWithEmailAndPassword(email, password)
         .then(authUser => authUser.user.updateProfile({displayName: username}))
         .catch(error => alert(error.message))
     setOpen(false)
